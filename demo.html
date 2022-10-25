@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Black Diamond Assessment</title>
+<style>
+body {
+background-color: lightblue;
+font-family: Helvetica;
+}
+.bars {
+  background-color: white;
+  height: 20px;
+  color: black;
+  font-size: 12px;
+  text-align: right;
+  padding: 5px 5px 0 0;
+  width: 0;
+  }
+
+  .text {
+  font-weight: bold;
+
+  }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+#main {
+width: 60%;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+}
+
+#header {
+margin-top: 0;
+border: 2px solid black;
+height: 80px;
+display: flex;
+align-items: center;
+}
+
+label {
+width: 150px;
+display: inline-block;
+}
+
+button {
+display: block;
+margin-top: 20px;
+
+}
+.hide{
+display:none;
+}
+
+</style>
+</head>
+<body>
+<div id="main">
+<div id="header"><img src="Black_Diamond.png" alt="BlackDiamond" class="center"></div>
+
+<form  id="form1">
+<p>What is the structure of your company?</p>
+<select name="structure" id="structure">
+	<option selected>Please select one</option>
+	<option value="sole">Sole Proprietorship</option>
+	<option value="partnership">Partnership</option>
+	<option value="llc">LLC</option>
+	<option value="ccorp">C corp</option>
+	<option value="scorp">S corp</option>
+	<option value="bcorp">B corp</option>
+	<option value="nonprofit">Nonprofit</option>
+</select>
+
+<p>How old is your company?</p>
+<select name="age" id="age">
+	<option selected>Please select one</option>
+        <option value="1">0 - 5 years</option>
+        <option value="2">6 - 10 years</option>
+        <option value="3">11 - 15 years</option>
+        <option value="4">16 - 20 years</option>
+        <option value="5">20+ years</option>
+</select>
+
+<p>Is your company product or service driven?</p>
+<label><input type="radio" name="type" id="product" value="1" />Product</label>
+<label><input type="radio" name="type" id="service" value="2" />Service</label>
+<label><input type="radio" name="type" id="hybrid" value="3" />Hybrid</label>
+
+<p>How many customers do you have?</p>
+<select name="customers" id="customers">
+	<option selected>Please select one</option>
+        <option value="1">0 - 100</option>
+        <option value="2">101 - 1,000</option>
+        <option value="3">1,001 - 100,000</option>
+        <option value="4">100,000 - 1 million</option>
+        <option value="5">1 million or more</option>
+</select>
+
+<p>What is your value proposition?</p>
+<label><input type="text" name="value" id="value" /></label>
+
+<p>Where are you in the Corporate Life Cycle?</p>
+<select name="clc" id="clc">
+	<option selected>Please select one</option>
+        <option value="1.0">Idea</option>
+        <option value="2.0">Launch</option>
+        <option value="3.0">1st Seed Funding</option>
+        <option value="4.0">DYU</option>
+        <option value="5.0">IVPI</option>
+        <option value="6.0">2nd Seed Funding</option>
+        <option value="7.0">3rd Seed Funding</option>
+        <option value="8.0">Produce</option>
+        <option value="9.0">3rd Mergers & Acquisitions</option>
+        <option value="10.0">IPO</option>
+</select>
+
+<p>Where are you in the Product Life Cycle?</p>
+<select name="plc" id="plc">
+	<option selected>Please select one</option>
+        <option value="1.0">Introduction</option>
+        <option value="2.0">Growth</option>
+        <option value="3.0">Maturity</option>
+        <option value="4.0">Decline</option>
+</select>
+
+<p>What is your business goal?</p>
+<select name="goal" id="goal" onChange="handleSelection(value)">
+        <option selected>Please select one</option>
+        <option value="ipo">IPO</option>
+        <option value="ma">Mergers & Acquisitions</option>
+	<option value="kids">Leave to kids</option>
+	<option value="sell">Sell to employees</option>
+</select>
+
+<div class="hide" id="ipometrics">
+	<p>What is your company's yearly revenue?</p>
+	<select name="revenue" id="revenue">
+		<option selected>Please select one</option>
+        	<option value="1.0">$0 - $100,000</option>
+        	<option value="2.0">$100,000 - $1 million</option>
+        	<option value="3.0">$1 million - $10 million</option>
+        	<option value="4.0">$10 million - $50 million</option>
+        	<option value="5.0">$50 million or more</option>
+	</select>
+	
+	<p>Is your business profitable?</p>
+	<label><input type="radio" name="profitable" id="yes" value="1" />Yes</label>
+	<label><input type="radio" name="profitable" id="no" value="0" />No</label>
+
+	<p>What is your market share?</p>
+	<label><input type="text" name="share" id="share" /></label>
+
+	<p>What is your Book to Bill Ratio?</p>
+	<label><input type="radio" name="ratio" id="<1" value="0" />Less than 1</label>
+        <label><input type="radio" name="ratio" id="1" value="1" />1</label>
+	<label><input type="radio" name="ratio" id=">1" value="2" />Greater than 1</label>	
+
+	<p>Where is your company located? (City, State)</p>
+	<label><input type="text" name="location" id="location" /></label>
+	
+	<p>How many patents does your company own?</p>
+	<label><input type="text" name="patents" id="patents" /></label>	
+</div>
+
+<div class="hide" id="macquisitions">
+	<p>How many employees does your company have?</p>
+	<select name="employees" id="employees">
+                <option selected>Please select one</option>
+                <option value="1">0 - 100</option>
+                <option value="2">101 - 1,000</option>
+                <option value="3">1,001 - 100,000</option>
+                <option value="4">100,000 - 1 million</option>
+                <option value="5">1 million or more</option>
+        </select>
+
+	<p>What is your company's revenue per employee?</p>
+	<label><input type="text" name="revper" id="revper" /></label>
+
+	 <p>What is your company's yearly revenue?</p>
+        <select name="revenue" id="revenue">
+		<option selected>Please select one</option>
+                <option value="1.0">$0 - $100,000</option>
+                <option value="2.0">$100,000 - $1 million</option>
+                <option value="3.0">$1 million - $10 million</option>
+                <option value="4.0">$10 million - $50 million</option>
+                <option value="5.0">$50 million or more</option>
+        </select>
+
+        <p>Is your business profitable?</p>
+        <label><input type="radio" name="profitable" id="yes" value="1" />Yes</label>
+        <label><input type="radio" name="profitable" id="no" value="0" />No</label>
+
+        <p>What is your market share?</p>
+	<label><input type="text" name="share" id="share" /></label>
+
+        <p>What is your Book to Bill Ratio?</p>
+        <label><input type="radio" name="ratio" id="<1" value="0" />Less than 1</label>
+        <label><input type="radio" name="ratio" id="1" value="1" />1</label>
+        <label><input type="radio" name="ratio" id=">1" value="2" />Greater than 1</label>
+
+        <p>Where is your company located? (City, State)</p>
+        <label><input type="text" name="location" id="location" /></label>
+
+        <p>How many patents does your company own?</p>
+        <label><input type="text" name="patents" id="patents" /></label>
+
+	<p>What are your company's margins?</p>
+	<label><input type="text" name="margins" id="margins" /></label>
+
+</div>
+
+<div class="hide" id="increaserevenue">
+	<p>What industry are you in?</p>
+	<select name="industry" id="industry">
+		<option selected>Please select one</option>
+        	<option value="administrative">Administrative Services</option>
+        	<option value="advertising">Advertising</option>
+        	<option value="agriculture">Agriculture and Farming</option>
+        	<option value="apps">Apps</option>
+        	<option value="artificial">Artificial Intelligence</option>
+        	<option value="biotech">Biotechnology</option>
+        	<option value="clothing">Clothing and Apparel</option>
+        	<option value="commerce">Commerce and Shopping</option>
+        	<option value="community">Community and Lifestyle</option>
+        	<option value="electronics">Consumer Electronics</option>
+        	<option value="goods">Consumer Goods</option>
+        	<option value="content">Content and Publishing</option>
+        	<option value="data">Data and Analytics</option>
+        	<option value="design">Design</option>
+        	<option value="education">Education</option>
+        	<option value="energy">Energy</option>
+        	<option value="events">Events</option>
+        	<option value="financial">Financial Services</option>
+		<option value="food">Food and Beverage</option>
+                <option value="gaming">Gaming</option>
+                <option value="government">Government and Military</option>
+                <option value="hardware">Hardware</option>
+                <option value="health">Health Care</option>
+                <option value="information">Information Technology</option>
+                <option value="internet">Internet Services</option>
+                <option value="lending">Lending and Investments</option>
+                <option value="media">Media and Entertainment</option>
+                <option value="messaging">Messaging and Telecommunications</option>
+                <option value="mobile">Mobile</option>
+                <option value="music">Music and Audio</option>
+                <option value="resources">Natural Resources</option>
+                <option value="navigation">Navigation and Mapping</option>
+                <option value="other">Other</option>
+                <option value="payments">Payments</option>
+                <option value="platforms">Platforms</option>
+                <option value="privacy">Privacy and Security</option>
+		<option value="professional">Professional Services</option>
+                <option value="realestate">Real Estate</option>
+                <option value="sales">Sales and Marketing</option>
+                <option value="science">Science and Engineering</option>
+                <option value="software">Software</option>
+                <option value="sports">Sports</option>
+                <option value="sustainability">Sustainability</option>
+                <option value="transportation">Transportation</option>
+                <option value="travel">Travel and Tourism</option>
+                <option value="video">Video</option>
+	</select>
+	
+	<p>How many employees does your company have?</p>
+	<select name="employees" id="employees">
+        	<option selected>Please select one</option>
+        	<option value="1">0 - 100</option>
+        	<option value="2">101 - 1,000</option>
+        	<option value="3">1,001 - 100,000</option>
+        	<option value="4">100,000 - 1 million</option>
+        	<option value="5">1 million or more</option>
+	</select>
+	
+
+        <p>What is your company's revenue per employee?</p>
+	<label><input type="text" name="revper" id="revper" /></label>
+
+         <p>What is your company's yearly revenue?</p>
+        <select name="revenue" id="revenue">
+		<option selected>Please select one</option>
+                <option value="1.0">$0 - $100,000</option>
+                <option value="2.0">$100,000 - $1 million</option>
+                <option value="3.0">$1 million - $10 million</option>
+                <option value="4.0">$10 million - $50 million</option>
+                <option value="5.0">$50 million or more</option>
+        </select>
+
+        <p>Is your business profitable?</p>
+        <label><input type="radio" name="profitable" id="yes" value="1" />Yes</label>
+        <label><input type="radio" name="profitable" id="no" value="0" />No</label>
+
+        <p>What is your market share?</p>
+	<label><input type="text" name="share" id="share" /></label>
+
+        <p>What is your Book to Bill Ratio?</p>
+        <label><input type="radio" name="ratio" id="<1" value="0" />Less than 1</label>
+        <label><input type="radio" name="ratio" id="1" value="1" />1</label>
+        <label><input type="radio" name="ratio" id=">1" value="2" />Greater than 1</label>
+
+        <p>Where is your company located? (City, State)</p>
+        <label><input type="text" name="location" id="location" /></label>
+
+        <p>How many patents does your company own?</p>
+        <label><input type="text" name="patents" id="patents" /></label>
+
+        <p>What are your company's margins?</p>
+	<label><input type="text" name="margins" id="margins" /></label>
+	
+</div>
+
+
+<button type="submit" value="Submit">Submit</button>
+
+</form>
+
+<p>Total: <span id="total"></span></p>
+
+<div id="customernumdiv" class="bars"></div>
+<div id="customernumtext" class="text"></div><br />
+<div id="valuepropdiv" class="bars"></div>
+<div id="valueproptext" class="text"></div><br />
+<div id="clcdiv" class="bars"></div>
+<div id="clctext" class="text"></div><br />
+<div id="plcdiv" class="bars"></div>
+<div id="plctext" class="text"></div><br />
+<div id="employeenumdiv" class="bars"></div>
+<div id="employeenumtext" class="text"></div><br />
+<div id="employeerevdiv" class="bars"></div>
+<div id="employeerevtext" class="text"></div><br />
+<div id="revenuediv" class="bars"></div>
+<div id="revenuetext" class="text"></div><br />
+<div id="sharediv" class="bars"></div>
+<div id="sharetext" class="text"></div><br />
+<div id="patentnumdiv" class="bars"></div>
+<div id="patentnumtext" class="text"></div><br />
+<div id="marginsdiv" class="bars"></div>
+<div id="marginstext" class="text"></div>
+
+</div>
+<script type="text/javascript">
+	
+	function handleSelection(choice) {
+		var ipo = document.getElementById('ipometrics');
+		var revenue = document.getElementById('increaserevenue');
+		var ma = document.getElementById('macquisitions');
+
+		if(choice=="ipo"){
+			ipo.style.display = "block";
+			revenue.style.display = "none";
+			ma.style.display = "none";
+		} else if(choice=="increaserevenue"){
+			revenue.style.display = "block";
+			ipo.style.display = "none";
+			ma.style.display = "none";
+		} else if(choice=="ma"){
+			ma.style.display = "block";
+			ipo.style.display = "none";
+                        revenue.style.display = "none";
+		} else {
+			ipo.style.display = "none";
+                        revenue.style.display = "none";
+                        ma.style.display = "none";
+		}
+	}
+
+	function colorHandler(section, color, multiplier) {
+		if((section * multiplier) < 75) {
+                                color = "red";
+                        } else if ((section * multiplier) >= 75 && (section * multiplier) < 90) {
+                                color = "yellow";
+                        } else {
+                                color = "green";
+                        }
+	}
+
+	document.getElementById("form1").onsubmit=function() {
+
+		if(document.querySelector('input[name = "profitable"]:checked') && document.querySelector('input[name = "type"]:checked')){
+
+	  		age  = parseInt(document.querySelector('#age').value);
+	  		customers = parseInt(document.querySelector('#customers').value);
+	  		plc = parseFloat(document.querySelector('#plc').value);
+			revenue = parseFloat(document.querySelector('#revenue').value);
+			profitable = parseInt(document.querySelector('input[name = "profitable"]:checked').value);
+
+	   		total = ((plc * 10) + (revenue * 20)) / 2;
+			
+			plccolor = "white";
+			revenuecolor = "white";
+
+			colorHandler(plc, plccolor, 10);
+			colorHandler(revenue, revenuecolor, 20);
+
+	   		document.getElementById("total").innerHTML = total;
+			
+			bars = [{name: "plc", val: plc, color: plccolor},
+				{name: "revenue", val: revenue, color: revenuecolor}
+			];
+
+			for(i = 0; i < bars.length; i++) {
+				multiplier = 10;
+				if (bars[i].name == "revenue") {
+					multiplier = 20
+				} else {
+					multiplier = 10
+				}
+				
+				document.getElementById(bars[i].name + "div").style.width = bars[i].val*multiplier*5 + "px";
+        			document.getElementById(bars[i].name + "div").style.backgroundColor = bars[i].color;
+        			document.getElementById(bars[i].name + "div").innerHTML = Math.round((bars[i].val)*multiplier) + "%";
+        			document.getElementById(bars[i].name + "text").innerHTML = bars[i].name;
+			}		
+
+		}
+		else {
+			alert("Fill out all questions before submitting.");
+		}
+		return false; 
+	}
+</script>
+
+</body>
+</html>
+
+
+
+
