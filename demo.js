@@ -83,6 +83,7 @@ function createSpiderChart(){
 					},
 				},
 			},	
+			responsive: false,
 			layout: {
 				padding: 0
 			},

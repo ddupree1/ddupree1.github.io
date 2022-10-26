@@ -52,19 +52,18 @@ form {
 figure {
   height: 100%;
   flex-basis: 48%;
-  border-radius: 20px;
   margin-right: 2%;
   margin-left: 2%;
   margin-top: 0px;
   margin-bottom: 0px;
   display: flex;
+  align-items: center;
 }
 
-canvas {
-  height: 100%;
-  width: 100%; 
+figure canvas {
+  height: 500px;
+  width: 500px; 
   padding: 5% 5% 5% 5%;
-  flex-shrink: 1;
 }
 
 
